@@ -4,7 +4,15 @@ from operation_node_filter import operation_node_filter
 from pygraph.algorithms.searching import depth_first_search
 
 def critial_path_length_list(graph):
+	"""
+	@type  graph: dionysus_dependency_graph
+	@param graph: calculate on this graph
 
+	@rtype:  list of tuples
+	@return: tuples look like (node_id, cpl_val), sorted by cpl_val in decreasing order
+
+	"""
+	
 	def recursive_critical_path_length(node):
 		# check if recursive function has calculated once		
 		have = [item for item in cpl_tuples if node in item]

@@ -125,8 +125,25 @@ class dionysus_dependency_graph(digraph):
 			print "edge: " + str(each) + " weight: " + str(self.edge_weight(each))
 
 	def print_all(self):
+		print "\n************************ nodes **************************"
 		self.print_nodes()
+		print "\n************************ edges **************************"
 		self.print_edges()
+
+	def print_nodes_with_attributes(self):
+		# test operation_nodes()
+		print "*** all nodes with attributs ***"
+		for each in self.operation_nodes():
+			print "node " + str(each) + " attributes: " + str(self.node_attributes(each)[0][1])
+		# test finished_operation_nodes()
+		for each in self.finished_operation_nodes():
+			print "node " + str(each) + " attributes: " + str(self.node_attributes(each)[0][1])
+		# test resource_nodes()
+		for each in self.resource_nodes():
+			print "node " + str(each) + " attributes: " + str(self.node_attributes(each)[0][1])
+
+		print "*********************************"
+
 
 	def is_add_tunnel_operation(self, node):
 		(attrs, vals) = self.node_attributes(node)[0]
@@ -196,21 +213,6 @@ class dionysus_dependency_graph(digraph):
 			return self.edge_weight(edge)
 		else:
 			return -999999999
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
