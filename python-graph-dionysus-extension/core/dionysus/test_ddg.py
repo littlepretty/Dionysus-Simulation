@@ -50,7 +50,16 @@ def create_FR_case_dependency_graph():
 	return gr
 
 def test_dependency_graph(graph):
+
 	graph.print_all()
+
+	print "*** s8's incidents(parents) ***"
+	for each in graph.incidents("s8"):
+		print each
+
+	print "*** s8's neighbors(children) ***"
+	for each in graph.neighbors("s8"):
+		print each
 
 	cpl_list = critial_path_length_list(graph)
 
@@ -58,6 +67,10 @@ def test_dependency_graph(graph):
 	for each in cpl_list:
 		print "node & its cpl: " + str(each)
 		graph.set_scheduled(each[0])
+
+	graph.print_all()
+
+	graph.del_node("s8")
 
 	graph.print_all()
 
