@@ -49,7 +49,72 @@ def update_graph_after_schedule(graph):
 
 
 def can_schedule_operation(graph, node):
-	
+	# add tunnel opeartion node
+	if graph.is_add_tunnel_operation(node):
+		if graph.has_no_parents(node):
+			return True
+		# add tunnel operation node only has 1 parent
+		if graph.incidents(finished):
+			parent = graph.incidents(finished)[0]
+			l = graph.edge_weight_on_nodes(parent, node)
+			if graph.free_capacity(parent) >= l:
+				free_capacity = graph.free_capacity(parent) - l
+				graph.set_free_capacity(parent, free_capacity)
+				graph.del_edge((parent, node))
+				return True
+			return False
+	# delete tunnel operation node
+	if graph.is_del_tunnel_operation(node):
+		if graph.has_no_parents(node):
+			return True
+		return False
+	# change weight operation node
+	total = 0
+	can_schedule = False
+
+	for path_node in [item for item in graph.incidents(node) if graph.node_type(item) == "path"]:
+		available = graph.edge_weight_on_nodes(path_node, node)
+		
+		if graph.has_no_parents(path_node):
+			available = 0
+		else:
+			for resource_node in [item for item in graph.incidents(path_node) if graph.node_type(item) == "resource"]:
+				l = graph.edge_weight_on_nodes(resource_node, path_node)
+				free_capacity = graph.free_capacity(resource_node)
+				available = min( [available, l, free_capacity] )
+			for resource_node in [item for item in graph.incidents(path_node) if graph.node_type(item) == "resource"]:
+				l = graph.edge_weight_on_nodes(resource_node, path_node) - available
+				graph.set_edge_weight((resource_node, path_node), l)
+				free_capacity = graph.free_capacity(resource_node) - available
+				graph.set_free_capacity(resource_node, free_capacity)
+
+		total += available
+		l = graph.edge_weight_on_nodes(path_node, node) - available
+		graph.set_edge_weight((path_node, node), l)
+
+	if total > 0:
+		can_schedule = True
+
+	for path_node in [item for itme in graph.neighbors(node) if graph.node_type(item) == "path"]:
+		l = graph.edge_weight_on_nodes(node, path_node)
+		committed = graph.committed(path_node)
+		graph.set_committed(path_node, min( [l, total] ))
+		l -= graph.committed(path_node)
+		graph.set_edge_weight((node, path_node), l)
+		total -= graph.committed(path_node)
+
+	return can_schedule
+
+
+
+
+
+
+
+
+
+
+
 
 
 

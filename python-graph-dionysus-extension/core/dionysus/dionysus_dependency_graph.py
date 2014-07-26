@@ -168,7 +168,7 @@ class dionysus_dependency_graph(digraph):
 
 	def has_no_parents(self, node):
 		parenets = self.incidents(node)
-		return 
+		return len(parenets) == 0
 
 	def operation_nodes(self):
 		return [item for item in self.nodes() if self.node_type(item) == "operation"]
