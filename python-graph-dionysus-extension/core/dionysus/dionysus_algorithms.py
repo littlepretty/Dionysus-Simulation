@@ -2,7 +2,6 @@
 from dionysus_dependency_graph import dionysus_dependency_graph
 from operation_node_filter import operation_node_filter
 from pygraph.algorithms.searching import depth_first_search
-from sys import getrecursionlimit, setrecursionlimit
 
 def critial_path_length_list(graph):
 

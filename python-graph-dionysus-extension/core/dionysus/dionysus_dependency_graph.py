@@ -148,6 +148,17 @@ class dionysus_dependency_graph(digraph):
 		else:
 			raise AdditionError( "%s is not a operation node" % node )
 
+	def is_chg_weight_operation(self, node):
+		(attrs, vals) = self.node_attributes(node)[0]
+		if self.node_type(node) == "operation":
+			if "operation_type" in vals:
+				return vals["operation_type"] == "chg_weight"
+			else:
+				raise AdditionError( "operation_type is missing in %s" % node )
+		else:
+			raise AdditionError( "%s is not a operation node" % node )
+
+
 	def has_operation_parents(self, node):
 		parenets = self.incidents(node)
 		for each in parenets:
@@ -159,7 +170,32 @@ class dionysus_dependency_graph(digraph):
 		parenets = self.incidents(node)
 		return 
 
+	def operation_nodes(self):
+		return [item for item in self.nodes() if self.node_type(item) == "operation"]
 
+	def finished_operation_nodes(self):
+		operation_node_list = self.operation_nodes()
+		return [item for item in operation_node_list if self.scheduled(item) == True]
+
+	def resource_nodes(self):
+		return [item for item in self.nodes() if self.node_type(item) == "resource"]
+
+	def path_nodes(self):
+		return [item for item in self.nodes() if self.node_type(item) == "path"]
+
+	def edge_connecting_nodes(self, start, end):
+		edges = [item for item in self.edges() if item[0] == start and item[1] == end]
+		if edges:
+			return edges[0]
+		else:
+			return []
+
+	def edge_weight_on_nodes(self, start, end):
+		edge = self.edge_connecting_nodes(start, end)
+		if edge:
+			return self.edge_weight(edge)
+		else:
+			return -999999999
 
 
 
