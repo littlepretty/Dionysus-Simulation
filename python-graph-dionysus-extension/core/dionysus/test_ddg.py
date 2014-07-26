@@ -74,6 +74,8 @@ def test_dependency_graph(graph):
 
 	graph.print_all()
 
+	print graph.edge_connecting_nodes("s4-s7", "s1")
+	print graph.edge_weight_on_nodes("s4-s7", "s1")
 
 
 def main():
