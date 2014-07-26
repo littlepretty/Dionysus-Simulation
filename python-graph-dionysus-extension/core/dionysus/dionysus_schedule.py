@@ -105,6 +105,24 @@ def can_schedule_operation(graph, node):
 
 	return can_schedule
 
+def schedule_graph(graph):
+	cpl_list = critial_path_length_list(graph)
+	scheduled_nodes = []
+	while cpl_list:
+		update_graph_after_schedule(graph)
+		cpl_list = critial_path_length_list(graph)
+		for each in cpl_list:
+			(node, cpl) = each
+			if can_schedule_operation(graph, node):
+				graph.set_scheduled(node)
+				scheduled_nodes.append(node)
+	return scheduled_nodes
+
+
+
+
+
+
 
 
 
