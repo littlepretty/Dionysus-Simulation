@@ -10,13 +10,13 @@ class dionysus_dependency_graph(digraph):
 	def __init__(self):
 		digraph.__init__(self)
 
-	def add_operation_node(self, node, weight = 1, scheduled = False, operation_type = "add_tunnel"):
+	def add_operation_node(self, node, operation_type, weight = 1, scheduled = False):
 		self.add_node(node, [ ("attrs", {"type": "operation", "weight": weight, "scheduled": scheduled, "operation_type": operation_type} ) ])
 
-	def add_resource_node(self, node, weight = 0, free_capacity = 0):
+	def add_resource_node(self, node, free_capacity = 0, weight = 0):
 		self.add_node(node, [ ("attrs",  {"type": "resource", "weight": weight, "free_capacity": free_capacity} ) ])
 
-	def add_path_node(self, node, weight = 0, committed = 0):
+	def add_path_node(self, node, committed = 0, weight = 0, ):
 		self.add_node(node, [ ("attrs",  {"type": "path", "weight": weight, "committed": committed} ) ])
 
 	def node_type(self, node):
