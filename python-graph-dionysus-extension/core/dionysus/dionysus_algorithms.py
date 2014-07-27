@@ -12,7 +12,7 @@ def critial_path_length_list(graph):
 	@return: tuples look like (node_id, cpl_val), sorted by cpl_val in decreasing order
 
 	"""
-	
+
 	def recursive_critical_path_length(node):
 		# check if recursive function has calculated once		
 		have = [item for item in cpl_tuples if node in item]
@@ -52,9 +52,6 @@ def critial_path_length_list(graph):
 	
 	# iter_order = topology_order.reverse = post_order
 	iter_order = post_order
-	print "*** node in topology's reverse order ***"
-	for each in iter_order:
-		print "node: " + str(each)
 
 	cpl_tuples = []
 
