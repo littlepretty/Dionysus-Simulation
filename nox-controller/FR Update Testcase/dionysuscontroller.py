@@ -14,9 +14,6 @@ from nox.lib.packet.packet_utils import mac_to_int, mac_to_str
 from array import *
 from nox.lib.util import convert_to_eaddr 
 
-# from nox.lib.core import DL_SRC  
-# from nox.lib.core import DL_DST
-
 import logging
 logger = logging.getLogger('nox.coreapps.examples.dionysuscontroller')
 CACHE_TIMEOUT = 100
@@ -30,6 +27,7 @@ EthAddr6 = "\x00\x00\x00\x00\x00\x06"
 EthAddr7 = "\x00\x00\x00\x00\x00\x07"
 EthAddr8 = "\x00\x00\x00\x00\x00\x08"
 Ether_Broadcast = "\xff\xff\xff\xff\xff\xff"
+Ether_Any = "\x00\x00\x00\x00\x00\x00"
 
 h1 = array('B', EthAddr1)
 h2 = array('B', EthAddr2)
@@ -39,7 +37,8 @@ h5 = array('B', EthAddr5)
 h6 = array('B', EthAddr6)
 h7 = array('B', EthAddr7)
 h8 = array('B', EthAddr8)
-broadcast = array('b', Ether_Broadcast)
+broadcast = array('B', Ether_Broadcast)
+anysource = array('B', Ether_Any)
 
 IDLE_TIMEOUT = 100
 HARD_TIMEOUT = 200
@@ -64,60 +63,38 @@ class dionysuscontroller(Component):
 		flood[core.DL_DST] = broadcast
 		actions = [[openflow.OFPAT_OUTPUT, openflow.OFPP_FLOOD]]
 		self.install_datapath_flow(dpid, flood, IDLE_TIMEOUT, openflow.OFP_FLOW_PERMANENT, actions)
+
+	def install_forward_entry_on_switch(self, dpid, dl_src, dl_dst, from_port, to_port):
+		flow = dict()
+		flow[core.DL_SRC] = dl_src
+		flow[core.DL_DST] = dl_dst
+		actions = [[openflow.OFPAT_OUTPUT, [0, self.port_map[from_port][to_port]]]]
+		bufferid = None
+		priority = 10
+		inport = None
+		packet = None
+		self.install_datapath_flow(dpid, flow, IDLE_TIMEOUT, HARD_TIMEOUT, actions, bufferid, priority, inport, packet) 
 		
 	def install_rule_for_sw1(self, dpid):	
 		self.install_flood_rule(dpid)
 
-		flow1 = dict()
-		flow1[core.DL_SRC] = h1
-		flow1[core.DL_DST] = h7
-		actions = [[openflow.OFPAT_OUTPUT, [0, self.port_map['s1']['s8']]]]
-		
-		"""
-		if flow1.has_key(core.DL_SRC):
-			print convert_to_eaddr(flow1[core.DL_SRC])
-		print convert_to_eaddr(flow1[core.DL_SRC])
-		if flow1.has_key(core.DL_DST):
-			print convert_to_eaddr(flow1[core.DL_DST])
-		print convert_to_eaddr(flow1[core.DL_DST])
-		"""
-		self.install_datapath_flow(dpid, flow1, IDLE_TIMEOUT, HARD_TIMEOUT, actions)
+		self.install_forward_entry_on_switch(dpid, h1, h7, 's1', 's8')
+		self.install_forward_entry_on_switch(dpid, h7, h1, 's1', 'h1')
+		# self.install_forward_entry_on_switch(dpid, anysource, h1, 's1', 'h1')
 
-		flow2 = dict()
-		# flow2[core.DL_SRC] = h7
-		flow2[core.DL_DST] = h1
-		actions = [[openflow.OFPAT_OUTPUT, [0, self.port_map['s1']['h1']]]]
-		self.install_datapath_flow(dpid, flow2, IDLE_TIMEOUT, HARD_TIMEOUT, actions)
-	
 	def install_rule_for_sw7(self, dpid):
 		self.install_flood_rule(dpid)
 		
-		flow1 = dict()
-		# flow1[core.DL_SRC] = h1
-		flow1[core.DL_DST] = h7
-		actions = [[openflow.OFPAT_OUTPUT, [0, self.port_map['s7']['h7']]]]
-		self.install_datapath_flow(dpid, flow1, IDLE_TIMEOUT, HARD_TIMEOUT, actions)
-			
-		flow2 = dict()
-		flow2[core.DL_SRC] = h7
-		flow2[core.DL_DST] = h1
-		actions = [[openflow.OFPAT_OUTPUT, [0, self.port_map['s7']['s8']]]]
-		self.install_datapath_flow(dpid, flow2, IDLE_TIMEOUT, HARD_TIMEOUT, actions)
-		
+		self.install_forward_entry_on_switch(dpid, h1, h7, 's7', 'h7')
+		# self.install_forward_entry_on_switch(dpid, anysource, h7, 's7', 'h7')
+		self.install_forward_entry_on_switch(dpid, h7, h1, 's7', 's8')		
+
 	def install_rule_for_sw8(self, dpid):
 		self.install_flood_rule(dpid)
 		
-		flow1 = dict()
-		flow1[core.DL_SRC] = h1
-		flow1[core.DL_DST] = h7
-		actions = [[openflow.OFPAT_OUTPUT, [0, self.port_map['s8']['s7']]]]
-		self.install_datapath_flow(dpid, flow1, IDLE_TIMEOUT, HARD_TIMEOUT, actions)
+		self.install_forward_entry_on_switch(dpid, h1, h7, 's8', 's7')
+		self.install_forward_entry_on_switch(dpid, h7, h1, 's8', 's1')
 			
-		flow2 = dict()
-		flow2[core.DL_SRC] = h7
-		flow2[core.DL_DST] = h1
-		actions = [[openflow.OFPAT_OUTPUT, [0, self.port_map['s8']['s1']]]]
-		self.install_datapath_flow(dpid, flow2, IDLE_TIMEOUT, HARD_TIMEOUT, actions)
 
 	def datapath_join_callback(self, dpid, attrs):
 		logger.info('switch ' + str(dpid) + ' joins in')
