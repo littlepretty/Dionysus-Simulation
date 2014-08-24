@@ -4,6 +4,146 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"resource_parents"
+			],
+			[
+				"resou",
+				"resource_parents"
+			],
+			[
+				"path",
+				"path_parents"
+			],
+			[
+				"reou",
+				"resource_parents"
+			],
+			[
+				"pare",
+				"path_parents"
+			],
+			[
+				"res",
+				"resource_node"
+			],
+			[
+				"sche",
+				"scheduled_nodes"
+			],
+			[
+				"can",
+				"can_schedule"
+			],
+			[
+				"has",
+				"has_no_parents"
+			],
+			[
+				"oper",
+				"operation"
+			],
+			[
+				"sch",
+				"scheduled_nodes"
+			],
+			[
+				"node",
+				"nodes"
+			],
+			[
+				"di",
+				"dionysus_algorithms"
+			],
+			[
+				"cpl",
+				"cpl_list"
+			],
+			[
+				"calcu",
+				"calculate"
+			],
+			[
+				"ass",
+				"assertIn"
+			],
+			[
+				"dion",
+				"dionysus_dependency_graph"
+			],
+			[
+				"set_",
+				"set_edge_weight"
+			],
+			[
+				"c",
+				"committed"
+			],
+			[
+				"no",
+				"node_type"
+			],
+			[
+				"nod",
+				"node"
+			],
+			[
+				"isde",
+				"is_del_tunnel_operation"
+			],
+			[
+				"in",
+				"incidents"
+			],
+			[
+				"is",
+				"is_add_tunnel_operation"
+			],
+			[
+				"del",
+				"del_node"
+			],
+			[
+				"del_",
+				"del_edge"
+			],
+			[
+				"wei",
+				"edge_weight_on_nodes"
+			],
+			[
+				"dele",
+				"del_node"
+			],
+			[
+				"rec",
+				"resource_node"
+			],
+			[
+				"edg",
+				"edge"
+			],
+			[
+				"prin",
+				"print_all"
+			],
+			[
+				"add",
+				"add_tunnel"
+			],
+			[
+				"gr",
+				"graph"
+			],
+			[
+				"free",
+				"free_capacity"
+			],
+			[
+				"op",
+				"operation_type"
+			],
+			[
 				"C",
 				"CACHE_TIMEOUT"
 			],
@@ -70,10 +210,6 @@
 			[
 				"change",
 				"change_ip_policy"
-			],
-			[
-				"in",
-				"infected_state"
 			],
 			[
 				"clear",
@@ -196,18 +332,34 @@
 	"buffers":
 	[
 		{
-			"file": "pygraph/algorithms/critical.py",
+			"file": "/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/README",
 			"settings":
 			{
-				"buffer_size": 5761,
+				"buffer_size": 1527,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "pygraph/classes/digraph.py",
+			"file": "dionysus/test_ddg.py",
 			"settings":
 			{
-				"buffer_size": 8025,
+				"buffer_size": 4404,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dionysus/dionysus_schedule.py",
+			"settings":
+			{
+				"buffer_size": 6364,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dionysus/dionysus_schedule_without_path_node.py",
+			"settings":
+			{
+				"buffer_size": 4187,
 				"line_ending": "Unix"
 			}
 		}
@@ -239,6 +391,25 @@
 	},
 	"file_history":
 	[
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dionysus/dionysus_dependency_graph.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dionysus/dionysus_schedule_without_path_node.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dionysus/dionysus_schedule.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dionysus/dionysus_algorithms.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dionysus/FR_case_0.png",
+		"/Users/YJQ/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/pygraph/mixins/labeling.py",
+		"/Users/YJQ/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dionysus/test_ddg.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dinoysus/test_ddg.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dinoysus/dionysus_dependency_graph.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dinoysus/dionysus_algorithms.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/pygraph/readwrite/markup.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/dinoysus/FR_case.png",
+		"/Users/YJQ/Desktop/dot_parser.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/pygraph/classes/graph.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/pygraph/mixins/common.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/pygraph/classes/digraph.py",
+		"/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/python-graph-dionysus-extension/core/pygraph/algorithms/critical.py",
 		"/Users/YJQ/Documents/XcodeDocuments/Coursera-SDN-Assignments/ProgrammingAssignments/noxcore/src/nox/coreapps/simple_py_app/simple_app.py",
 		"/Users/YJQ/Documents/XcodeDocuments/Coursera-SDN-Assignments/ProgrammingAssignments/noxcore/build/src/nox/coreapps/examples/pyswitch.py",
 		"/Users/YJQ/Documents/XcodeDocuments/Coursera-SDN-Assignments/ProgrammingAssignments/noxcore/build/src/nox/coreapps/examples/tutorial/pylearningswitch.py",
@@ -294,7 +465,7 @@
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -308,6 +479,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"finished",
+			"node",
+			"resource_node",
+			"path_node",
+			"self.graph",
+			"del_edge",
+			"assertItemEqual",
+			"each",
+			"wrap",
 			"debug",
 			"log",
 			"getlogger",
@@ -382,6 +562,12 @@
 		"regex": true,
 		"replace_history":
 		[
+			"Oi",
+			"Rk",
+			"Pj",
+			"self.fr_graph",
+			"assertItemsEqual",
+			"finished",
 			"info",
 			"logger",
 			"debug",
@@ -452,61 +638,30 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "pygraph/algorithms/critical.py",
+					"file": "/Users/YJQ/Documents/XcodeDocuments/Dionysus-Simulation/README",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5761,
+						"buffer_size": 1527,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								475,
+								475
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "pygraph/classes/digraph.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8025,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -514,13 +669,106 @@
 					},
 					"stack_index": 0,
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dionysus/test_ddg.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4404,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1660,
+								1719
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1091.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "dionysus/dionysus_schedule.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6364,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								822,
+								822
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dionysus/dionysus_schedule_without_path_node.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1083,
+								823
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 236.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"file": "dionysus/FR_case_step_3.png",
+					"semi_transient": false,
+					"stack_index": 4,
+					"type": "image"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -560,7 +808,7 @@
 	"project": "core.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -594,7 +842,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 209.0,
+	"side_bar_width": 210.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
